@@ -73,6 +73,15 @@ CREATE TABLE `STORES` (
   `location` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `STORES`
+--
+
+INSERT INTO `STORES` (`id`, `name`, `location`) VALUES
+(1, 'ABC Grocery', 'New York'),
+(2, 'XYZ Supermarket', 'Los Angeles'),
+(3, 'PQR Convenience Store', 'Chicago');
+
 -- --------------------------------------------------------
 
 --
@@ -86,3 +95,92 @@ CREATE TABLE `USERS` (
   `password` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `role` enum('customer','store owner') COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `USERS`
+--
+
+INSERT INTO `USERS` (`id`, `name`, `email`, `password`, `role`) VALUES
+(1, 'John Doe', 'johndoe@example.com', 'password', 'customer'),
+(2, 'Jane Doe', 'janedoe@example.com', 'password', 'store owner'),
+(3, 'Bob Smith', 'bobsmith@example.com', 'password', 'customer'),
+(4, 'Alice Jones', 'alicejones@example.com', 'password', 'store owner');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `ORDERS`
+--
+ALTER TABLE `ORDERS`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `store_id` (`store_id`);
+
+--
+-- Indexes for table `ORDER_ITEMS`
+--
+ALTER TABLE `ORDER_ITEMS`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `order_id` (`order_id`),
+  ADD KEY `product_id` (`product_id`);
+
+--
+-- Indexes for table `PRODUCTS`
+--
+ALTER TABLE `PRODUCTS`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `store_id` (`store_id`);
+
+--
+-- Indexes for table `RATINGS`
+--
+ALTER TABLE `RATINGS`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `store_id` (`store_id`);
+
+--
+-- Indexes for table `STORES`
+--
+ALTER TABLE `STORES`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `USERS`
+--
+ALTER TABLE `USERS`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `ORDERS`
+--
+ALTER TABLE `ORDERS`
+  ADD CONSTRAINT `ORDERS_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `USERS` (`id`),
+  ADD CONSTRAINT `ORDERS_ibfk_2` FOREIGN KEY (`store_id`) REFERENCES `STORES` (`id`);
+
+--
+-- Constraints for table `ORDER_ITEMS`
+--
+ALTER TABLE `ORDER_ITEMS`
+  ADD CONSTRAINT `ORDER_ITEMS_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `ORDERS` (`id`),
+  ADD CONSTRAINT `ORDER_ITEMS_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `PRODUCTS` (`id`);
+
+--
+-- Constraints for table `PRODUCTS`
+--
+ALTER TABLE `PRODUCTS`
+  ADD CONSTRAINT `PRODUCTS_ibfk_1` FOREIGN KEY (`store_id`) REFERENCES `STORES` (`id`);
+
+--
+-- Constraints for table `RATINGS`
+--
+ALTER TABLE `RATINGS`
+  ADD CONSTRAINT `RATINGS_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `USERS` (`id`),
+  ADD CONSTRAINT `RATINGS_ibfk_2` FOREIGN KEY (`store_id`) REFERENCES `STORES` (`id`);
+COMMIT;
