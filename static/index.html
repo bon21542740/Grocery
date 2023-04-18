@@ -1,78 +1,38 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Login</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f2f2f2;
-      }
-      
-      .container {
-        margin: auto;
-        max-width: 400px;
-        padding: 10px;
-        background-color: #fff;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.3);
-      }
-      
-      h1 {
-        text-align: center;
-        color: #555;
-      }
-      
-      input[type=text], input[type=password] {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
-        border-radius: 4px;
-      }
-      
-      button[type=submit] {
-        background-color: #4CAF50;
-        color: #fff;
-        padding: 12px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        width: 100%;
-      }
-      
-      button[type=submit]:hover {
-        background-color: #45a049;
-      }
-      
-      .form-error {
-        color: #f44336;
-      }
-      
-      @media screen and (max-width: 600px) {
-        .container {
-          max-width: 100%;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <h1>Login</h1>
-      <form action="/auth" method="POST">
-        <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" required>
-    
-        <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" required>
-        <?php if(isset($errorMessage)) { ?>
-          <p class="form-error"><?= $errorMessage ?></p>
-        <?php } ?>
-    
-        <button type="submit">Login</button>
-      </form>
-    </div>
-  </body>
-</html>
+doctype html
+html
+  head
+    title Login
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    style
+      body
+        font-family: Arial, sans-serif
+        background-color: #f2f2f2
+      .container
+        margin: auto
+        max-width: 400px
+        padding: 10px
+        background-color: #fff
+        border-radius: 5px
+        box-shadow: 0 0 10px rgba(0,0,0,0.3)
+      h1
+        text-align: center
+        color: #555
+      input(type='text', placeholder='Enter Email', name='email', required)
+      input(type='password', placeholder='Enter Password', name='password', required)
+      if (typeof errorMessage !== 'undefined')
+        p.form-error= errorMessage
+      button(type='submit') Login
+    @media screen and (max-width: 600px)
+      .container
+        max-width: 100%
+  body
+    .container
+      h1 Login
+      form(action='/auth', method='POST')
+        label(for='email') Email
+        input(type='text', placeholder='Enter Email', name='email', required)
+        label(for='password') Password
+        input(type='password', placeholder='Enter Password', name='password', required)
+        if (typeof errorMessage !== 'undefined')
+          p.form-error= errorMessage
+        button(type='submit') Login
