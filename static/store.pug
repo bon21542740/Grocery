@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    title Stores
+    script.
+      function addStore() {
+        // TODO: Implement adding a store
+      }
+
+      function deleteStore(storeId) {
+        // TODO: Implement deleting a store with the given ID
+      }
+  body
+    h1 Stores
+    ul
+      //- Generate a list of stores with buttons to add or delete them
+      each store in stores
+        li
+          span= store.name
+          button(onclick=`deleteStore(${store.id})`) Delete
+    button(onclick="addStore()") Add Store
