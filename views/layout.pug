@@ -1,0 +1,30 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Grocery Store App
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css", integrity="sha512-qXQ/43LcPm/itf/7yyGDEQ2wOe5KZXxOgMfCC6/Jb9p5r5aOjAxOrJykrzkgFT17wB7U6RgU6flKU6I9H6v0lw==", crossorigin="anonymous", referrerpolicy="no-referrer")
+  body
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+      a.navbar-brand(href="/") Grocery Store App
+      button.navbar-toggler(type="button", data-toggle="collapse", data-target="#navbarNav", aria-controls="navbarNav", aria-expanded="false", aria-label="Toggle navigation")
+        span.navbar-toggler-icon
+      div.collapse.navbar-collapse#navbarNav
+        ul.navbar-nav
+          li.nav-item
+            a.nav-link(href="/login") Login
+          li.nav-item
+            a.nav-link(href="/signup") Signup
+          li.nav-item.dropdown
+            a.nav-link.dropdown-toggle(href="#", id="navbarDropdown", role="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false") Stores
+            div.dropdown-menu(aria-labelledby="navbarDropdown")
+              a.dropdown-item(href="#") Action
+              a.dropdown-item(href="#") Another action
+              div.dropdown-divider
+              a.dropdown-item(href="#") Something else here
+    .container
+      block content
+    script(src="https://code.jquery.com/jquery-3.6.0.min.js", integrity="sha384-/U6joP9sV8o8T7YTpfDgUf1WWB6FYMMW8OvUzBfRVYYL9+oaHVWY8eK7JvoRxT2Z", crossorigin="anonymous", referrerpolicy="no-referrer")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js", integrity="sha512-vww5ue5eigD+szWJj8fV5/DIwPd7+eLWfP8JzWhj+LG1cX9g/EYlAz8jv1JlLw+oDQ2cWIk6UH1yUOXx6UjJ6w==", crossorigin="anonymous", referrerpolicy="no-referrer")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js", integrity="sha512-pctukWeh6U/Xz1BvT6Ue2Qd9tnVRWCFidZg06w1SDpH6eJru1SmdyxfhRIRP72o+mtX9q3JK4ZPUnkZdIaZ/nw==", crossorigin="anonymous", referrerpolicy="no-referrer")
