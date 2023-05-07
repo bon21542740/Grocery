@@ -1,0 +1,46 @@
+doctype html
+html
+  head
+    title Grocery Store App
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css', integrity='sha512-vn7w2Q/pb3qLBJxlp6BcTY7VtzDYvY9X7V1FZyeTxBCrvRkAjiE06t+5ue5e5a5bNQOYCM3XNz/D+ctOViN0w==', crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.slim.min.js', integrity='sha512-Kf5pEJ5G5Jxg5+2d+NNXthxFhZftKtfsoctz8Cc8UTaPvJyOXJQ+1+fjE1emG9+MhyZJz28jSlr+JG6WXTjvHA==', crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js', integrity='sha512-PVusTNMKgN8Oya9osfYz+GLVgmvN97URHwK1qanztC+kVg+zJMJBCd8o7XuYp50lVzktG97L1nW6GK55PKyMfA==', crossorigin='anonymous')
+
+  body
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      a.navbar-brand(href='#') Grocery Store App
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      div#navbarNav.collapse.navbar-collapse
+        ul.navbar-nav.ml-auto
+          li.nav-item
+            a.nav-link(href='#') Home
+          li.nav-item
+            a.nav-link(href='/login') Login
+          li.nav-item
+            a.nav-link(href='/signup') Signup
+          li.nav-item.dropdown
+            a.nav-link.dropdown-toggle(href='#', id='navbarDropdown', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') Store
+            div.dropdown-menu(aria-labelledby='navbarDropdown')
+              a.dropdown-item(href='#') Products
+              a.dropdown-item(href='#') Orders
+              a.dropdown-item(href='#') Settings
+
+    .container.mt-3
+      .jumbotron
+        h1(class='display-4') Welcome to our Grocery Store App!
+        p(class='lead') We are committed to providing you with fresh and quality products.
+        hr(class='my-4')
+        p Explore our wide range of products and enjoy hassle-free shopping.
+
+      .row.mt-5
+        .col-sm-4
+          .card
+            img.card-img-top(src='https://via.placeholder.com/300x200.png?text=Product+Image', alt='Product Image')
+            .card-body
+              h5.card-title Product 1
+              p.card-text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.
+              a.btn.btn-primary(href='#') Buy Now
+        .col-sm-4
+          .card
+            img.card-img-top(src='https://via.placeholder.com/300x200.png?text=Product+Image', alt='some')
