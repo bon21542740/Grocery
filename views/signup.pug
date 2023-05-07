@@ -1,0 +1,24 @@
+doctype html
+html
+ head
+   title Sign Up
+ body
+   h1 Sign Up
+   form(action='/signup', method='POST')
+     label(for='name') Name:
+     input(type='text', name='name', required)
+     label(for='email') Email:
+     input(type='email', name='email', required)
+     label(for='password') Password:
+     input(type='password', name='password', required)
+     label(for='role') Role:
+     select(name='role', required)
+       option(value='customer') Customer
+       option(value='store owner') Store Owner
+     br
+     button(type='submit') Submit
+   p Already have an account?
+     a(href='/login') Log in here.
+
+
+
