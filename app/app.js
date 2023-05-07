@@ -78,3 +78,39 @@ app.post('/signup', async (req, res) => {
   // Redirect the user to the login page
   res.redirect('/login');
 });
+
+// Get all stores
+app.get('/store', async (req, res) => {
+  const stores = await db.query('SELECT * FROM STORES');
+  res.render('store', { stores });
+});
+
+// Create a new store
+app.post('/store', async (req, res) => {
+  const { name, location } = req.body;
+  await db.query('INSERT INTO STORES (name, location) VALUES (?, ?)', [name, location]);
+  res.redirect('/store');
+});
+
+// Get a store by ID
+app.get('/store/:id', async (req, res) => {
+  const store = await db.query('SELECT * FROM STORES WHERE id = ?', [req.params.id]);
+  res.render('store-edit', { store });
+});
+
+// Update a store by ID
+app.put('/store/:id', async (req, res) => {
+  const { name, location } = req.body;
+  await db.query('UPDATE STORES SET name = ?, location = ? WHERE id = ?', [name, location, req.params.id]);
+  res.redirect('/store');
+});
+
+// Delete a store by ID
+app.delete('/store/:id', async (req, res) => {
+  await db.query('DELETE FROM STORES WHERE id = ?', [req.params.id]);
+  res.redirect('/store');
+});
+
+app.listen(3000,function(){
+  console.log(`Server running at http://127.0.0.1:3000/`);
+});
